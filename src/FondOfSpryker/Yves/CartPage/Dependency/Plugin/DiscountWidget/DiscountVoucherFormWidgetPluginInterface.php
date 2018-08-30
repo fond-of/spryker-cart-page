@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Yves\CartPage\Dependency\Plugin\DiscountWidget;
 
+use ArrayObject;
+
 interface DiscountVoucherFormWidgetPluginInterface
 {
     const NAME = 'DiscountVoucherFormWidgetPlugin';
@@ -9,5 +11,5 @@ interface DiscountVoucherFormWidgetPluginInterface
     /**
      * @param \ArrayObject|null $data
      */
-    public function initialize(?\ArrayObject $data): void;
+    public function initialize(ArrayObject $data): void;
 }

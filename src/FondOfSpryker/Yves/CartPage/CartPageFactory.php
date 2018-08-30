@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
-use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
+use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 
 class CartPageFactory extends SprykerShopCartPageFactory
 {

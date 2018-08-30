@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Yves\CartPage\Controller;
 
-use FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClient;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartController;
 
 /**

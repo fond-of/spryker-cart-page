@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Yves\CartPage\Dependency\Client;
 
-
 use FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface;
 use Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReaderInterface;
 

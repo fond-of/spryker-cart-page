@@ -4,7 +4,6 @@ namespace FondOfSpryker\Yves\CartPage\Dependency\Client;
 
 use FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface;
 use Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReaderInterface;
-use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageInterface;
 
 class CartPageToProductImageStorageBridge implements CartPageToProductImageStorageInterface
 {
@@ -15,6 +14,7 @@ class CartPageToProductImageStorageBridge implements CartPageToProductImageStora
 
     /**
      * CartPageToProductImageStorageBridge constructor.
+     *
      * @param \FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface $productImageStorageClient
      */
     public function __construct(ProductImageStorageClientInterface $productImageStorageClient)
@@ -26,5 +26,4 @@ class CartPageToProductImageStorageBridge implements CartPageToProductImageStora
     {
         return $this->productImageStorageClient->getProductAbstractImageStorageReader();
     }
-
 }
