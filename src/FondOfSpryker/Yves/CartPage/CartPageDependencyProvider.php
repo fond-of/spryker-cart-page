@@ -4,6 +4,7 @@ namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageBridge;
+use FondOfSpryker\Yves\CartPage\Plugin\LocalizedAbstractAttributesExpanderPlugin;
 use FondOfSpryker\Yves\CartPage\Plugin\ThumbnailImageExpanderPlugin;
 use FondOfSpryker\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
 use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface;
@@ -51,6 +52,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     protected function getCartItemTransformerPlugins(): array
     {
         return [
+            new LocalizedAbstractAttributesExpanderPlugin(),
             new ThumbnailImageExpanderPlugin(),
         ];
     }
