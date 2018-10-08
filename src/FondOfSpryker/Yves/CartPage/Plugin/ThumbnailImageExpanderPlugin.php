@@ -55,6 +55,10 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements ThumbnailIm
             $locale
         );
 
+        if ($productImageSetStorageTransfer === null) {
+            return;
+        }
+
         $itemTransfer->setImages($productImageSetStorageTransfer);
     }
 
