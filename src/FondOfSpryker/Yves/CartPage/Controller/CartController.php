@@ -9,7 +9,12 @@ use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartContro
  */
 class CartController extends SprykerShopCartController
 {
-    protected function executeIndexAction(?array $selectedAttributes): array
+    /**
+     * @param array $selectedAttributes
+     *
+     * @return array
+     */
+    protected function executeIndexAction(array $selectedAttributes = []): array
     {
         $validateQuoteResponseTransfer = $this->getFactory()
             ->getCartClient()

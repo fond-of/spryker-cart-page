@@ -6,10 +6,12 @@ use ArrayObject;
 
 interface DiscountVoucherFormWidgetPluginInterface
 {
-    const NAME = 'DiscountVoucherFormWidgetPlugin';
+    public const NAME = 'DiscountVoucherFormWidgetPlugin';
 
     /**
-     * @param \ArrayObject|null $data
+     * @param  \ArrayObject|null  $data
+     *
+     * @return void
      */
-    public function initialize(ArrayObject $data): void;
+    public function initialize(?\ArrayObject $data): void;
 }

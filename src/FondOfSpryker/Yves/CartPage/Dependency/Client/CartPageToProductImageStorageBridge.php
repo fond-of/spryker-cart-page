@@ -8,13 +8,11 @@ use Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReader
 class CartPageToProductImageStorageBridge implements CartPageToProductImageStorageInterface
 {
     /**
-     * @var \Spryker\Client\ProductImageStorage\ProductImageStorageClientInterface
+     * @var \FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface
      */
     protected $productImageStorageClient;
 
     /**
-     * CartPageToProductImageStorageBridge constructor.
-     *
      * @param \FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface $productImageStorageClient
      */
     public function __construct(ProductImageStorageClientInterface $productImageStorageClient)
@@ -22,6 +20,9 @@ class CartPageToProductImageStorageBridge implements CartPageToProductImageStora
         $this->productImageStorageClient = $productImageStorageClient;
     }
 
+    /**
+     * @return \Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReaderInterface
+     */
     public function getProductAbstractImageStorageReader(): ProductAbstractImageStorageReaderInterface
     {
         return $this->productImageStorageClient->getProductAbstractImageStorageReader();

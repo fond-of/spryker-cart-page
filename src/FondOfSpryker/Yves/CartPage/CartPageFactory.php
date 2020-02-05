@@ -19,4 +19,12 @@ class CartPageFactory extends SprykerShopCartPageFactory
     {
         return $this->getProvidedDependency(CartPageDependencyProvider::PRODUCT_IMAGE_STORAGE_CLIENT);
     }
+    
+    /**
+     * @return \FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
+     */
+    public function getCartItemTransformerPlugins()
+    {
+        return $this->getProvidedDependency(CartPageDependencyProvider::PLUGIN_CART_ITEM_TRANSFORMERS);
+    }
 }

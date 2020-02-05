@@ -12,10 +12,15 @@ class CartItemReader extends SprykerShopCartItemReader
      */
     protected $locale;
 
+    /**
+     * @var \FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
+     */
+    protected $cartItemTransformerPlugins;
+
     public function __construct(array $cartItemTransformerPlugins, string $locale)
     {
         parent::__construct($cartItemTransformerPlugins);
-
+        $this->cartItemTransformerPlugins = $cartItemTransformerPlugins;
         $this->locale = $locale;
     }
 

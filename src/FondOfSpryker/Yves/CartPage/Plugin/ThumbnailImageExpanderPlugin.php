@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Yves\CartPage\Plugin;
 
+use ArrayObject;
+use FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Yves\Kernel\AbstractPlugin;
@@ -9,9 +11,9 @@ use Spryker\Yves\Kernel\AbstractPlugin;
 /**
  * @method \FondOfSpryker\Yves\CartPage\CartPageFactory getFactory()
  */
-class ThumbnailImageExpanderPlugin extends AbstractPlugin implements ThumbnailImageExpanderPluginInterface
+class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTransformerPluginInterface
 {
-    const THUMBNAIL_IMAGE_SET = 'Thumbnail';
+    public const THUMBNAIL_IMAGE_SET = 'Thumbnail';
 
     /**
      * @var \FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageInterface
@@ -22,10 +24,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements ThumbnailIm
      * @var \Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReader
      */
     protected $productAbstractImageStorageReader;
-
-    /**
-     * ThumbnailImageExpanderPlugin constructor.
-     */
+    
     public function __construct()
     {
         $this->productImageStorageClient = $this
@@ -62,7 +61,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements ThumbnailIm
         $itemTransfer->setImages($productImageSetStorageTransfer);
     }
 
-    protected function getAllImageSets(int $idProductAbstract, string $locale): ?\ArrayObject
+    protected function getAllImageSets(int $idProductAbstract, string $locale): ?ArrayObject
     {
         $productAbstractImageStorageTransfer = $this->productAbstractImageStorageReader->findProductImageAbstractStorageTransfer(
             $idProductAbstract,
