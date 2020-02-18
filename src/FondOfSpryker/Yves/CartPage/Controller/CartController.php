@@ -22,7 +22,7 @@ class CartController extends SprykerShopCartController
 
         $this->getFactory()
             ->getZedRequestClient()
-            ->addFlashMessagesFromLastZedRequest();
+            ->addResponseMessagesToMessenger();
 
         $quoteTransfer = $validateQuoteResponseTransfer->getQuoteTransfer();
 
@@ -34,8 +34,12 @@ class CartController extends SprykerShopCartController
             ->createCartItemsAttributeProvider()
             ->getItemsAttributes($quoteTransfer, $this->getLocale(), $selectedAttributes);
 
+        $quoteClient = $this->getFactory()->getQuoteClient();
+
         return [
             'cart' => $quoteTransfer,
+            'isQuoteEditable' => $quoteClient->isQuoteEditable($quoteTransfer),
+            'isQuoteLocked' => $quoteClient->isQuoteLocked($quoteTransfer),
             'cartItems' => $cartItems,
             'attributes' => $itemAttributesBySku,
             'isQuoteValid' => $validateQuoteResponseTransfer->getIsSuccessful(),
