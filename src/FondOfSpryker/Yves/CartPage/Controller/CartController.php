@@ -3,12 +3,16 @@
 namespace FondOfSpryker\Yves\CartPage\Controller;
 
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartController;
+use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \FondOfSpryker\Yves\CartPage\CartPageFactory getFactory()
  */
 class CartController extends SprykerShopCartController
 {
+    public const REQUEST_HEADER_REFERER = 'referer';
+
     /**
      * @param array $selectedAttributes
      *
@@ -44,5 +48,52 @@ class CartController extends SprykerShopCartController
             'attributes' => $itemAttributesBySku,
             'isQuoteValid' => $validateQuoteResponseTransfer->getIsSuccessful(),
         ];
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addAction(Request $request, $sku)
+    {
+        $redirect = parent::addAction($request, $sku);
+        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false){
+            $redirect = $this->redirect($request);
+        }
+
+        return $redirect;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction(Request $request, $sku)
+    {
+        $redirect = parent::removeAction($request, $sku);
+
+        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false){
+            $redirect = $this->redirect($request);
+        }
+
+        return $redirect;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    protected function redirect(Request $request)
+    {
+        if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
+            return $this->redirectResponseExternal($request->headers->get(static::REQUEST_HEADER_REFERER));
+        }
+
+        return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
     }
 }

@@ -31,3 +31,10 @@ class CartPageDependencyProvider extends FondOfCartPageDependencyProvider
     }
 }
 ```
+
+## Configuration
+
+After item add to cart or item remove from cart redirect to cart or stay on page. Default is true
+```
+$config[CartPageConstants::REDIRECT_TO_CART_AFTER_ADD_TO_CART] = true|false;
+```
