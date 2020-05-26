@@ -41,6 +41,7 @@ class CartController extends SprykerShopCartController
         $quoteClient = $this->getFactory()->getQuoteClient();
 
         return [
+            'removeCartItemForm' => $this->getFactory()->createCartPageFormFactory()->getRemoveForm()->createView(),
             'cart' => $quoteTransfer,
             'isQuoteEditable' => $quoteClient->isQuoteEditable($quoteTransfer),
             'isQuoteLocked' => $quoteClient->isQuoteLocked($quoteTransfer),
@@ -59,7 +60,7 @@ class CartController extends SprykerShopCartController
     public function addAction(Request $request, $sku)
     {
         $redirect = parent::addAction($request, $sku);
-        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false){
+        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false) {
             $redirect = $this->redirect($request);
         }
 
@@ -76,7 +77,7 @@ class CartController extends SprykerShopCartController
     {
         $redirect = parent::removeAction($request, $sku);
 
-        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false){
+        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false) {
             $redirect = $this->redirect($request);
         }
 

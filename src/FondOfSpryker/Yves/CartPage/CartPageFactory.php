@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
+use FondOfSpryker\Yves\CartPage\Form\FormFactory;
 use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
 use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 
@@ -37,5 +38,13 @@ class CartPageFactory extends SprykerShopCartPageFactory
     public function getShouldRedirectToCartAfterAddToCart(): bool
     {
         return $this->getConfig()->getShouldRedirectToCartAfterAddToCart();
+    }
+
+    /**
+     * @return \FondOfSpryker\Yves\CartPage\Form\FormFactory
+     */
+    public function createFondOfCartPageFormFactory(): FormFactory
+    {
+        return new FormFactory();
     }
 }
