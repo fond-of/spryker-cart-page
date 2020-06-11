@@ -11,6 +11,7 @@ use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpander
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
+use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 
@@ -18,6 +19,34 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
     public const PRODUCT_IMAGE_EXPANDER = 'PRODUCT_IMAGE_EXPANDER';
     public const PRODUCT_IMAGE_STORAGE_CLIENT = 'PRODUCT_IMAGE_STORAGE_CLIENT';
+    public const CLIENT_PRODUCT_ALIAS_STORAGE = 'CLIENT_PRODUCT_ALIAS_STORAGE';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = parent::provideDependencies($container);
+        $container = $this->addProductAliasStorageClient($container);
+
+        return $container;
+    }
+
+    /**
+     * @param  \Spryker\Yves\Kernel\Container  $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductAliasStorageClient(Container $container): Container
+    {
+        $container[static::CLIENT_PRODUCT_ALIAS_STORAGE] = function (Container $container) {
+            return $container->getLocator()->productResourceAliasStorage()->client();
+        };
+
+        return $container;
+    }
 
     protected function addProductImageStorageClient(Container $container): Container
     {
@@ -34,7 +63,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     protected function getCartPageWidgetPlugins(): array
     {
         return [
-            CheckoutBreadcrumbWidgetPlugin::class,
+            CheckoutBreadcrumbWidget::class,
             DiscountVoucherFormWidgetPlugin::class,
             DiscountSummaryWidgetPlugin::class,
             DiscountPromotionItemListWidgetPlugin::class,

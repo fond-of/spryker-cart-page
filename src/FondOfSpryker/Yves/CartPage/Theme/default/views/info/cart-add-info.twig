@@ -1,0 +1,38 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    product: _view.product,
+    title: 'cart.cart.info' | trans
+} %}
+
+{% block headTitle %}
+    {{ data.title }}
+{% endblock %}
+
+{% block content %}
+        {% if data.product.name is defined %}
+            <script>
+                window.setTimeout(function(){
+                    window.location.href = "{{ data.product.url }}";
+
+                }, 10000);
+            </script>
+            <div class="cart-wrapper">
+                <div class="cart">
+                    <div class="cart__headline">{{ data.title }}</div>
+                    <div class="cart__content">
+                        <p>{{ 'direct-add-to-card-not-available' | trans }} {{ 'direct-add-to-card-not-available-redirect' | trans }} <a href ="{{ data.product.url }}">{{ 'direct-add-to-card-not-available-to-product-text' | trans  }} {{ data.product.name }}</a></p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="cart-wrapper">
+                <div class="cart">
+                    <div class="cart__headline">{{ data.title }}</div>
+                    <div class="cart__content">
+                        <p>{{ 'direct-add-to-card-not-available' | trans  }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+{% endblock %}

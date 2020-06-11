@@ -12,6 +12,7 @@
   "prefer-stable": true,
   "require": {
     "php": ">=7.2",
+    "fond-of-spryker/product-resource-alias-storage": "dev-master",
     "spryker-shop/cart-page": "^3.12.0"
   },
   "require-dev": {

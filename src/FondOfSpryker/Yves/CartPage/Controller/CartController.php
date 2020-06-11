@@ -2,6 +2,9 @@
 
 namespace FondOfSpryker\Yves\CartPage\Controller;
 
+use FondOfSpryker\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
+use Spryker\Shared\Kernel\Store;
+use Spryker\Yves\Kernel\View\View;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartController;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +17,7 @@ class CartController extends SprykerShopCartController
     public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
-     * @param array $selectedAttributes
+     * @param  array  $selectedAttributes
      *
      * @return array
      */
@@ -52,13 +55,35 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param string $sku
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     *
+     * @return \Spryker\Yves\Kernel\View\View
+     */
+    public function addInfoAction(Request $request): View
+    {
+        $productData = $this->getFactory()->getProductAliasStorageClient()->getProductConcreteStorageDataBySku($request->attributes->get('sku'), Store::getInstance()->getCurrentLocale());
+
+        return $this->view(
+            [
+                'product' => $productData
+            ],
+            [],
+            '@CartPage/views/info/cart-add-info.twig'
+        );
+    }
+
+    /**
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @param  string  $sku
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function addAction(Request $request, $sku)
     {
+        if ($request->getMethod() === Request::METHOD_GET) {
+            return $this->redirectResponseInternal(CartPageRouteProviderPlugin::ROUTE_CART_ADD_INFO, ['sku' => $sku]);
+        }
+
         $redirect = parent::addAction($request, $sku);
         if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false) {
             $redirect = $this->redirect($request);
@@ -68,8 +93,8 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param string $sku
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @param  string  $sku
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -85,7 +110,7 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
