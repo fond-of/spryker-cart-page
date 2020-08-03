@@ -4,8 +4,6 @@ namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
 use Spryker\Client\ProductResourceAliasStorage\ProductResourceAliasStorageClientInterface;
-use Spryker\Client\Search\SearchClientInterface;
-use Spryker\Client\SearchElasticsearch\SearchElasticsearchClientInterface;
 use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 
 /**
@@ -13,6 +11,11 @@ use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
  */
 class CartPageFactory extends SprykerShopCartPageFactory
 {
+    /**
+     * @param string $locale
+     *
+     * @return \FondOfSpryker\Yves\CartPage\Model\CartItemReader
+     */
     public function createCartItemReaderWithLocale(string $locale)
     {
         return new CartItemReader($this->getCartItemTransformerPlugins(), $locale);
@@ -44,7 +47,6 @@ class CartPageFactory extends SprykerShopCartPageFactory
 
     /**
      * @return \Spryker\Client\ProductResourceAliasStorage\ProductResourceAliasStorageClientInterface
-     * @throws \Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     public function getProductAliasStorageClient(): ProductResourceAliasStorageClientInterface
     {

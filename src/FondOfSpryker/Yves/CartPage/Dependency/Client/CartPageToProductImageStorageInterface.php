@@ -7,7 +7,13 @@ use Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReader
 
 interface CartPageToProductImageStorageInterface
 {
+    /**
+     * @param \FondOfSpryker\Client\ProductImageStorage\ProductImageStorageClientInterface $productImageStorageClient
+     */
     public function __construct(ProductImageStorageClientInterface $productImageStorageClient);
 
+    /**
+     * @return \Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReaderInterface
+     */
     public function getProductAbstractImageStorageReader(): ProductAbstractImageStorageReaderInterface;
 }

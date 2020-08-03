@@ -4,13 +4,10 @@ namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageBridge;
-use FondOfSpryker\Yves\CartPage\Plugin\LocalizedAbstractAttributesExpanderPlugin;
-use FondOfSpryker\Yves\CartPage\Plugin\ThumbnailImageExpanderPlugin;
 use FondOfSpryker\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
 use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
-use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
@@ -35,7 +32,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     }
 
     /**
-     * @param  \Spryker\Yves\Kernel\Container  $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
      */
@@ -48,6 +45,11 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
         return $container;
     }
 
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
     protected function addProductImageStorageClient(Container $container): Container
     {
         $container[self::PRODUCT_IMAGE_STORAGE_CLIENT] = function (Container $container) {

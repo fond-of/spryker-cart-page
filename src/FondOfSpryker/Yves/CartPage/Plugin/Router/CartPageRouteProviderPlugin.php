@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Yves\CartPage\Plugin\Router;
 
-use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin as SprykerCartPageRouteProviderPlugin;
 use Spryker\Yves\Router\Route\RouteCollection;
+use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin as SprykerCartPageRouteProviderPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartPageRouteProviderPlugin extends SprykerCartPageRouteProviderPlugin

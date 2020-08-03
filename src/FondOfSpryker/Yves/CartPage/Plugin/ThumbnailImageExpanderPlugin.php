@@ -24,7 +24,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
      * @var \Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReader
      */
     protected $productAbstractImageStorageReader;
-    
+
     public function __construct()
     {
         $this->productImageStorageClient = $this
@@ -34,6 +34,13 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
         $this->productAbstractImageStorageReader = $this->productImageStorageClient->getProductAbstractImageStorageReader();
     }
 
+    /**
+     * @param array $cartItems
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param string $locale
+     *
+     * @return array
+     */
     public function transformCartItems(array $cartItems, QuoteTransfer $quoteTransfer, string $locale): array
     {
         /** @var \Generated\Shared\Transfer\ItemTransfer $cartItem */
@@ -45,9 +52,12 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
     }
 
     /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param string $locale
+     *
      * @return void
      */
-    protected function expandItemWithThumnailImageSet(ItemTransfer &$itemTransfer, string $locale)
+    protected function expandItemWithThumnailImageSet(ItemTransfer &$itemTransfer, string $locale): void
     {
         $productImageSetStorageTransfer = $this->getAllImageSets(
             $itemTransfer->getIdProductAbstract(),
@@ -61,6 +71,12 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
         $itemTransfer->setImages($productImageSetStorageTransfer);
     }
 
+    /**
+     * @param int $idProductAbstract
+     * @param string $locale
+     *
+     * @return \ArrayObject|null
+     */
     protected function getAllImageSets(int $idProductAbstract, string $locale): ?ArrayObject
     {
         $productAbstractImageStorageTransfer = $this->productAbstractImageStorageReader->findProductImageAbstractStorageTransfer(

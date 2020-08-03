@@ -17,6 +17,10 @@ class CartItemReader extends SprykerShopCartItemReader
      */
     protected $cartItemTransformerPlugins;
 
+    /**
+     * @param array $cartItemTransformerPlugins
+     * @param string $locale
+     */
     public function __construct(array $cartItemTransformerPlugins, string $locale)
     {
         parent::__construct($cartItemTransformerPlugins);

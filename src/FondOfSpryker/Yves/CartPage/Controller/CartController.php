@@ -17,7 +17,7 @@ class CartController extends SprykerShopCartController
     public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
-     * @param  array  $selectedAttributes
+     * @param array $selectedAttributes
      *
      * @return array
      */
@@ -55,7 +55,7 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Spryker\Yves\Kernel\View\View
      */
@@ -65,7 +65,7 @@ class CartController extends SprykerShopCartController
 
         return $this->view(
             [
-                'product' => $productData
+                'product' => $productData,
             ],
             [],
             '@CartPage/views/info/cart-add-info.twig'
@@ -73,8 +73,8 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     * @param  string  $sku
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -93,8 +93,8 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     * @param  string  $sku
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -110,7 +110,7 @@ class CartController extends SprykerShopCartController
     }
 
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
