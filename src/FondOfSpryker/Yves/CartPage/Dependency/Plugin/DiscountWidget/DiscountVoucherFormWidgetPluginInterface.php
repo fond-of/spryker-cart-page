@@ -7,9 +7,9 @@ interface DiscountVoucherFormWidgetPluginInterface
     public const NAME = 'DiscountVoucherFormWidgetPlugin';
 
     /**
-     * @param \ArrayObject $data
+     * @param  \ArrayObject|null  $data
      *
      * @return void
      */
-    public function initialize(ArrayObject $data): void;
+    public function initialize(?\ArrayObject $data): void;
 }
