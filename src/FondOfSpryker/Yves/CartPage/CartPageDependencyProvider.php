@@ -4,9 +4,6 @@ namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageBridge;
-use FondOfSpryker\Yves\CartPage\Plugin\LocalizedAbstractAttributesExpanderPlugin;
-use FondOfSpryker\Yves\CartPage\Plugin\ThumbnailImageExpanderPlugin;
-use FondOfSpryker\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
 use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
@@ -35,7 +32,6 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         return [
             CheckoutBreadcrumbWidgetPlugin::class,
-            DiscountVoucherFormWidgetPlugin::class,
             DiscountSummaryWidgetPlugin::class,
             DiscountPromotionItemListWidgetPlugin::class,
         ];
