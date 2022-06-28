@@ -7,7 +7,6 @@ use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageB
 use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
-use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 
@@ -64,7 +63,6 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     protected function getCartPageWidgetPlugins(): array
     {
         return [
-            CheckoutBreadcrumbWidget::class,
             DiscountSummaryWidgetPlugin::class,
             DiscountPromotionItemListWidgetPlugin::class,
         ];
