@@ -6,7 +6,6 @@ use FondOfSpryker\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\View\View;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartController;
-use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -120,6 +119,6 @@ class CartController extends SprykerShopCartController
             return $this->redirectResponseExternal($request->headers->get(static::REQUEST_HEADER_REFERER));
         }
 
-        return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+        return $this->redirectResponseInternal(CartPageRouteProviderPlugin::ROUTE_CART_PUBLIC);
     }
 }

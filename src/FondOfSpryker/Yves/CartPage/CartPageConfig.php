@@ -3,9 +3,9 @@
 namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Shared\CartPages\CartPageConstants;
-use Spryker\Yves\Kernel\AbstractBundleConfig;
+use SprykerShop\Yves\CartPage\CartPageConfig as SprykerCartPageConfig;
 
-class CartPageConfig extends AbstractBundleConfig
+class CartPageConfig extends SprykerCartPageConfig
 {
     /**
      * @return bool
