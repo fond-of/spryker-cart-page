@@ -2,7 +2,7 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
-use FondOfSpryker\Shared\CartPages\CartPageConstants;
+use FondOfSpryker\Shared\CartPage\CartPageConstants;
 use SprykerShop\Yves\CartPage\CartPageConfig as SprykerCartPageConfig;
 
 class CartPageConfig extends SprykerCartPageConfig

@@ -1,6 +1,6 @@
 <?php
 
-namespace FondOfSpryker\Shared\CartPages;
+namespace FondOfSpryker\Shared\CartPage;
 
 interface CartPageConstants
 {
