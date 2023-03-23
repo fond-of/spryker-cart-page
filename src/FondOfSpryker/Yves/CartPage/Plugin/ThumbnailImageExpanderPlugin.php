@@ -45,7 +45,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
     {
         /** @var \Generated\Shared\Transfer\ItemTransfer $cartItem */
         foreach ($cartItems as $cartItem) {
-            $this->expandItemWithThumnailImageSet($cartItem, $quoteTransfer->getLocale()->getLocaleName());
+            $this->expandItemWithThumnailImageSet($cartItem, $this->getLocale());
         }
 
         return $cartItems;
