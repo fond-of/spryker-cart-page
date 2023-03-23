@@ -3,10 +3,10 @@
 namespace FondOfSpryker\Yves\CartPage\Plugin;
 
 use ArrayObject;
-use FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Yves\Kernel\AbstractPlugin;
+use SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface;
 
 /**
  * @method \FondOfSpryker\Yves\CartPage\CartPageFactory getFactory()
@@ -31,21 +31,21 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
             ->getFactory()
             ->getProductImageStorageClient();
 
-        $this->productAbstractImageStorageReader = $this->productImageStorageClient->getProductAbstractImageStorageReader();
+        $this->productAbstractImageStorageReader = $this->productImageStorageClient
+            ->getProductAbstractImageStorageReader();
     }
 
     /**
      * @param array $cartItems
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $locale
+     * @param QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return array|ItemTransfer[]
      */
-    public function transformCartItems(array $cartItems, QuoteTransfer $quoteTransfer, string $locale): array
+    public function transformCartItems(array $cartItems, QuoteTransfer $quoteTransfer): array
     {
         /** @var \Generated\Shared\Transfer\ItemTransfer $cartItem */
         foreach ($cartItems as $cartItem) {
-            $this->expandItemWithThumnailImageSet($cartItem, $locale);
+            $this->expandItemWithThumnailImageSet($cartItem, $quoteTransfer->getLocale()->getLocaleName());
         }
 
         return $cartItems;
