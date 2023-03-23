@@ -17,11 +17,14 @@ class CartController extends SprykerShopCartController
 
     /**
      * @param array $selectedAttributes
+     * @param bool $withItems
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function executeIndexAction(array $selectedAttributes = []): array
+    protected function executeIndexAction(array $selectedAttributes = [], bool $withItems = true): array
     {
+        $viewData = parent::executeIndexAction($selectedAttributes, $withItems);
+
         $validateQuoteResponseTransfer = $this->getFactory()
             ->getCartClient()
             ->validateQuote();
@@ -42,7 +45,7 @@ class CartController extends SprykerShopCartController
 
         $quoteClient = $this->getFactory()->getQuoteClient();
 
-        return [
+        return array_merge($viewData, [
             'removeCartItemForm' => $this->getFactory()->createCartPageFormFactory()->getRemoveForm()->createView(),
             'cart' => $quoteTransfer,
             'isQuoteEditable' => $quoteClient->isQuoteEditable($quoteTransfer),
@@ -50,7 +53,7 @@ class CartController extends SprykerShopCartController
             'cartItems' => $cartItems,
             'attributes' => $itemAttributesBySku,
             'isQuoteValid' => $validateQuoteResponseTransfer->getIsSuccessful(),
-        ];
+        ]);
     }
 
     /**
