@@ -8,7 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CartPageRouteProviderPlugin extends SprykerCartPageRouteProviderPlugin
 {
+    /**
+     * @var string
+     */
     public const ROUTE_CART_ADD_INFO = 'cart/add-info';
+
+    /**
+     * @var string
+     */
     public const ROUTE_CART_PUBLIC = 'cart';
 
     /**
