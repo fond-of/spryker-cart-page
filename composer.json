@@ -1,42 +1,44 @@
 {
-  "name": "fond-of-spryker/cart-page",
-  "description": "n/a",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Pascal Fischer",
-      "email": "pascal.fischer@fondof.de"
+    "name": "fond-of-spryker/cart-page",
+    "description": "n/a",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pascal Fischer",
+            "email": "pascal.fischer@fondof.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "fond-of-spryker/product-resource-alias-storage": "dev-2022-spryker-upgrade",
+        "spryker-shop/cart-page": "^3.36",
+        "spryker/product-image-storage": "^1.10.0",
+        "spryker-shop/discount-widget": "^1.4.0",
+        "spryker-shop/discount-promotion-widget": "^3.0.0",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
+    },
+    "require-dev": {
+        "fond-of-codeception/spryker": "^1.0",
+        "spryker/code-sniffer": "*",
+        "spryker-sdk/phpstan-spryker": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "FondOfSpryker\\": "src/FondOfSpryker/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FondOfSpryker\\": "tests/FondOfSpryker/",
+            "Generated\\": "tests/Generated/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require": {
-    "php": ">=8.0",
-    "fond-of-spryker/product-resource-alias-storage": "dev-2022-spryker-upgrade",
-    "spryker-shop/cart-page": "^3.36",
-    "spryker/product-image-storage": "^1.10.0",
-    "spryker-shop/discount-widget": "^1.4.0",
-    "spryker-shop/discount-promotion-widget": "^3.0.0"
-  },
-  "require-dev": {
-    "fond-of-codeception/spryker": "^1.0",
-    "spryker/code-sniffer": "*",
-    "spryker-sdk/phpstan-spryker": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "FondOfSpryker\\": "src/FondOfSpryker/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "FondOfSpryker\\": "tests/FondOfSpryker/",
-      "Generated\\": "tests/Generated/"
-    }
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
-  }
 }
