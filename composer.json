@@ -13,7 +13,10 @@
   "require": {
     "php": ">=8.0",
     "fond-of-spryker/product-resource-alias-storage": "dev-2022-spryker-upgrade",
-    "spryker-shop/cart-page": "^3.36"
+    "spryker-shop/cart-page": "^3.36",
+    "spryker/product-image-storage": "^1.10.0",
+    "spryker-shop/discount-widget": "^1.4.0",
+    "spryker-shop/discount-promotion-widget": "^3.0.0"
   },
   "require-dev": {
     "fond-of-codeception/spryker": "^1.0",

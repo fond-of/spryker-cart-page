@@ -10,5 +10,14 @@
     </transfer>
 
     <transfer name="ProductImage"/>
-    <transfer name="ProductImageSetStorage"/>
+    <transfer name="Quote"/>
+
+    <transfer name="ProductImageSetStorage">
+        <property name="name" type="string"/>
+        <property name="images" singular="image" type="ProductImageStorage[]"/>
+    </transfer>
+
+    <transfer name="ProductAbstractImageStorage">
+        <property name="imageSets" singular="imageSet" type="ProductImageSetStorage[]"/>
+    </transfer>
 </transfers>
