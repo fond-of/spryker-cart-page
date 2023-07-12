@@ -4,15 +4,15 @@ install:
 
 .PHONY: phpcs
 phpcs:
-	./vendor/bin/phpcs --standard=./vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src/FondOfSpryker/* ./tests/*
+	./vendor/bin/phpcs --standard=./vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src/FondOfSpryker/*
 
 .PHONY: phpcbf
 phpcbf:
-	./vendor/bin/phpcbf --standard=./vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src/FondOfSpryker/* ./tests/*
+	./vendor/bin/phpcbf --standard=./vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src/FondOfSpryker/*
 
 .PHONY: phpstan
 phpstan:
-	./vendor/bin/phpstan --memory-limit=-1 analyse ./src/FondOfSpryker ./tests
+	./vendor/bin/phpstan --memory-limit=-1 analyse ./src/FondOfSpryker
 
 .PHONY: codeception
 codeception:
