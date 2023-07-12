@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CartController extends SprykerShopCartController
 {
+    /**
+     * @var string
+     */
     public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
@@ -63,7 +66,9 @@ class CartController extends SprykerShopCartController
      */
     public function addInfoAction(Request $request): View
     {
-        $productData = $this->getFactory()->getProductAliasStorageClient()->getProductConcreteStorageDataBySku($request->attributes->get('sku'), Store::getInstance()->getCurrentLocale());
+        $productData = $this->getFactory()
+            ->getProductAliasStorageClient()
+            ->getProductConcreteStorageDataBySku($request->attributes->get('sku'), Store::getInstance()->getCurrentLocale());
 
         return $this->view(
             [
@@ -87,7 +92,7 @@ class CartController extends SprykerShopCartController
         }
 
         $redirect = parent::addAction($request, $sku);
-        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false) {
+        if ($this->getFactory()->getConfig()->getShouldRedirectToCartAfterAddToCart() === false) {
             $redirect = $this->redirect($request);
         }
 
@@ -104,7 +109,7 @@ class CartController extends SprykerShopCartController
     {
         $redirect = parent::removeAction($request, $sku);
 
-        if ($this->getFactory()->getShouldRedirectToCartAfterAddToCart() === false) {
+        if ($this->getFactory()->getConfig()->getShouldRedirectToCartAfterAddToCart() === false) {
             $redirect = $this->redirect($request);
         }
 

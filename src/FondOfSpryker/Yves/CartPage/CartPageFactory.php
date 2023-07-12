@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Yves\CartPage;
 
 use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
-use Spryker\Client\ProductResourceAliasStorage\ProductResourceAliasStorageClientInterface;
+use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageClientInterface;
 use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 
 /**
@@ -22,11 +22,11 @@ class CartPageFactory extends SprykerShopCartPageFactory
     }
 
     /**
-     * @return mixed
+     * @return CartPageToProductImageStorageClientInterface
      */
-    public function getProductImageStorageClient()
+    public function getProductImageStorageClient(): CartPageToProductImageStorageClientInterface
     {
-        return $this->getProvidedDependency(CartPageDependencyProvider::PRODUCT_IMAGE_STORAGE_CLIENT);
+        return $this->getProvidedDependency(CartPageDependencyProvider::CLIENT_PRODUCT_IMAGE_STORAGE);
     }
 
     /**
@@ -35,21 +35,5 @@ class CartPageFactory extends SprykerShopCartPageFactory
     public function getCartItemTransformerPlugins()
     {
         return $this->getProvidedDependency(CartPageDependencyProvider::PLUGIN_CART_ITEM_TRANSFORMERS);
-    }
-
-    /**
-     * @return bool
-     */
-    public function getShouldRedirectToCartAfterAddToCart(): bool
-    {
-        return $this->getConfig()->getShouldRedirectToCartAfterAddToCart();
-    }
-
-    /**
-     * @return \Spryker\Client\ProductResourceAliasStorage\ProductResourceAliasStorageClientInterface
-     */
-    public function getProductAliasStorageClient(): ProductResourceAliasStorageClientInterface
-    {
-        return $this->getProvidedDependency(CartPageDependencyProvider::CLIENT_PRODUCT_ALIAS_STORAGE);
     }
 }
