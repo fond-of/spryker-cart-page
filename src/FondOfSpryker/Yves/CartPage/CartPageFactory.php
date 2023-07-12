@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
-use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageClientInterface;
+use FondOfSpryker\Yves\CartPage\Model\CartItemReader;
 use SprykerShop\Yves\CartPage\CartPageFactory as SprykerShopCartPageFactory;
 
 /**
@@ -22,7 +22,7 @@ class CartPageFactory extends SprykerShopCartPageFactory
     }
 
     /**
-     * @return CartPageToProductImageStorageClientInterface
+     * @return \FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageClientInterface
      */
     public function getProductImageStorageClient(): CartPageToProductImageStorageClientInterface
     {
@@ -30,7 +30,7 @@ class CartPageFactory extends SprykerShopCartPageFactory
     }
 
     /**
-     * @return \FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
+     * @return array<\FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface>
      */
     public function getCartItemTransformerPlugins()
     {

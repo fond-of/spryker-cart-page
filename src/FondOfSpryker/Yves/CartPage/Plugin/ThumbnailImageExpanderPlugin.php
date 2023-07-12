@@ -20,9 +20,9 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
 
     /**
      * @param array $cartItems
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array|ItemTransfer[]
+     * @return array<\Generated\Shared\Transfer\ItemTransfer>
      */
     public function transformCartItems(array $cartItems, QuoteTransfer $quoteTransfer): array
     {
@@ -44,7 +44,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
     {
         $productImageSetStorageTransfer = $this->getAllImageSets(
             $itemTransfer->getIdProductAbstract(),
-            $locale
+            $locale,
         );
 
         if ($productImageSetStorageTransfer === null) {

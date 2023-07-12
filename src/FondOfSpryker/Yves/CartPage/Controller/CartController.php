@@ -75,7 +75,7 @@ class CartController extends SprykerShopCartController
                 'product' => $productData,
             ],
             [],
-            '@CartPage/views/info/cart-add-info.twig'
+            '@CartPage/views/info/cart-add-info.twig',
         );
     }
 

@@ -2,10 +2,7 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
-use FondOfSpryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageBridge;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageClientBridge;
-use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
@@ -38,15 +35,15 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductImageStorageClient(Container $container): Container
     {
         $container[static::CLIENT_PRODUCT_IMAGE_STORAGE] = static function (Container $container) {
             return new CartPageToProductImageStorageClientBridge(
-                $container->getLocator()->productImageStorage()->client()
+                $container->getLocator()->productImageStorage()->client(),
             );
         };
 
