@@ -13,33 +13,16 @@ use SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterfa
  */
 class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTransformerPluginInterface
 {
+    /**
+     * @var string
+     */
     public const THUMBNAIL_IMAGE_SET = 'Thumbnail';
 
     /**
-     * @var \FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageInterface
-     */
-    protected $productImageStorageClient;
-
-    /**
-     * @var \Spryker\Client\ProductImageStorage\Storage\ProductAbstractImageStorageReader
-     */
-    protected $productAbstractImageStorageReader;
-
-    public function __construct()
-    {
-        $this->productImageStorageClient = $this
-            ->getFactory()
-            ->getProductImageStorageClient();
-
-        $this->productAbstractImageStorageReader = $this->productImageStorageClient
-            ->getProductAbstractImageStorageReader();
-    }
-
-    /**
      * @param array $cartItems
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array|ItemTransfer[]
+     * @return array<\Generated\Shared\Transfer\ItemTransfer>
      */
     public function transformCartItems(array $cartItems, QuoteTransfer $quoteTransfer): array
     {
@@ -61,7 +44,7 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
     {
         $productImageSetStorageTransfer = $this->getAllImageSets(
             $itemTransfer->getIdProductAbstract(),
-            $locale
+            $locale,
         );
 
         if ($productImageSetStorageTransfer === null) {
@@ -79,10 +62,9 @@ class ThumbnailImageExpanderPlugin extends AbstractPlugin implements CartItemTra
      */
     protected function getAllImageSets(int $idProductAbstract, string $locale): ?ArrayObject
     {
-        $productAbstractImageStorageTransfer = $this->productAbstractImageStorageReader->findProductImageAbstractStorageTransfer(
-            $idProductAbstract,
-            $locale
-        );
+        $productAbstractImageStorageTransfer = $this->getFactory()
+            ->getProductImageStorageClient()
+            ->findProductImageAbstractStorageTransfer($idProductAbstract, $locale);
 
         /** @var \Generated\Shared\Transfer\ProductImageSetStorageTransfer $item */
         foreach ($productAbstractImageStorageTransfer->getImageSets() as $item) {

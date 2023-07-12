@@ -13,7 +13,7 @@ class CartItemReader extends SprykerShopCartItemReader
     protected $locale;
 
     /**
-     * @var \FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
+     * @var array<\FondOfSpryker\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface>
      */
     protected $cartItemTransformerPlugins;
 
@@ -31,7 +31,7 @@ class CartItemReader extends SprykerShopCartItemReader
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\ItemTransfer[]
+     * @return array<\Generated\Shared\Transfer\ItemTransfer>
      */
     public function getCartItems(QuoteTransfer $quoteTransfer): array
     {
