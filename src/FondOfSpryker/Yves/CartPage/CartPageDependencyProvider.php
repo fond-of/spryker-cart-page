@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Yves\CartPage;
 
+use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToLocaleClientBridge;
 use FondOfSpryker\Yves\CartPage\Dependency\Client\CartPageToProductImageStorageClientBridge;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
@@ -78,7 +79,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     protected function addLocaleClient(Container $container): Container
     {
         $container[static::CLIENT_LOCALE] = function (Container $container) {
-            return $container->getLocator()->locale()->client();
+            return new CartPageToLocaleClientBridge($container->getLocator()->locale()->client());
         };
 
         return $container;
