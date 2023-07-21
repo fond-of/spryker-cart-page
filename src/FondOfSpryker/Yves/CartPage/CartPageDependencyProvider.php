@@ -21,6 +21,11 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     public const CLIENT_PRODUCT_ALIAS_STORAGE = 'CLIENT_PRODUCT_ALIAS_STORAGE';
 
     /**
+     * @var string
+     */
+    public const CLIENT_LOCALE = 'CLIENT_LOCALE';
+
+    /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
@@ -30,6 +35,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
         $container = parent::provideDependencies($container);
         $container = $this->addProductAliasStorageClient($container);
         $container = $this->addProductImageStorageClient($container);
+        $container = $this->addLocaleClient($container);
 
         return $container;
     }
@@ -59,6 +65,20 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         $container[static::CLIENT_PRODUCT_ALIAS_STORAGE] = function (Container $container) {
             return $container->getLocator()->productResourceAliasStorage()->client();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addLocaleClient(Container $container): Container
+    {
+        $container[static::CLIENT_LOCALE] = function (Container $container) {
+            return $container->getLocator()->locale()->client();
         };
 
         return $container;

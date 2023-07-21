@@ -3,7 +3,6 @@
 namespace FondOfSpryker\Yves\CartPage\Controller;
 
 use FondOfSpryker\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\View\View;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerShopCartController;
 use Symfony\Component\HttpFoundation\Request;
@@ -66,9 +65,13 @@ class CartController extends SprykerShopCartController
      */
     public function addInfoAction(Request $request): View
     {
+        $currentLocale = $this->getFactory()
+            ->getLocaleClient()
+            ->getCurrentLocale();
+
         $productData = $this->getFactory()
             ->getProductAliasStorageClient()
-            ->getProductConcreteStorageDataBySku($request->attributes->get('sku'), Store::getInstance()->getCurrentLocale());
+            ->getProductConcreteStorageDataBySku($request->attributes->get('sku'), $currentLocale);
 
         return $this->view(
             [

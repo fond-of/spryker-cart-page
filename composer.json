@@ -13,7 +13,8 @@
   "require": {
     "php": ">=8.0",
     "fond-of-spryker/product-resource-alias-storage": "dev-2022-spryker-upgrade",
-    "spryker-shop/cart-page": "^3.36"
+    "spryker-shop/cart-page": "^3.36",
+    "spryker/locale": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "require-dev": {
     "fond-of-codeception/spryker": "^1.0",
